@@ -1,0 +1,14 @@
+.canvas_block{
+    width:100%;
+    height:900px;
+    margin:0;
+    padding:0;
+}
+.operation_button{
+    float: right;
+    margin-right:50px;
+}
+.operation_button >li{
+    list-style: none;
+    height:30px;
+}
