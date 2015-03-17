@@ -3,21 +3,29 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>WEBGL TEST</title>
-    <style type="text/css">
-        .canvas_block{
-            width:100%;
-            height:900px;
-            margin:0;
-            padding:0;
-        }
-    </style>
+    <link type="text/css" href="../css/webglTest.css" rel="stylesheet" />
 </head>
 <body>
     <div class="canvas_block">
         <canvas id="webgl_canvas" width="500" height="500"></canvas>
+        <ul class="operation_button">
+            <li>
+                <label for="camera-position-x">camera-position-x :</label>
+                <input type="text" name="camera-position" id="camera-position-x" value="0"/>
+            </li>
+            <li>
+                <label for="camera-position-y">camera-position-y :</label>
+                <input type="text" name="camera-position" id="camera-position-y" value="1000"/>
+            </li>
+            <li>
+                <label for="camera-position-z">camera-position-z :</label>
+                <input type="text" name="camera-position" id="camera-position-z" value="0"/>
+            </li>
+        </ul>
     </div>
 </body>
 <script type="text/javascript">
+    //test canvas support
     (function(){
         var canvas=document.createElement('canvas');
         if(!canvas || typeof canvas.getContext !== 'function'){
@@ -25,7 +33,22 @@
         }
     })();
 </script>
-<script type="text/javascript" src="../framework/three.js/build/three.min.js"></script>
-<script type="text/javascript" src="../framework/jquery/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="../framework/seajs-2.3.0/dist/sea.js"></script><!--sea.js-->
+<script type="text/javascript" src="../framework/three.js/build/three.min.js"></script><!--three.js-->
+<script type="text/javascript" src="../framework/jquery/jquery-2.1.3.min.js"></script><!--jquery-->
 <script type="text/javascript" src="../javascript/dynamic/webglTest.js"></script>
+<script type="text/javascript">
+    (function () {
+        var url = window.location.href;
+        var basePath = window.location.href.slice(0, url.lastIndexOf(window.location.pathname));
+        var time = new Date().getTime();
+        seajs.config({
+            base: basePath + '/javascript/',
+            map: [
+                ['.js', '.js?ver=' + time]
+            ]
+        });
+        seajs.use(['dynamic/main']);
+    })();
+</script>
 </html>
