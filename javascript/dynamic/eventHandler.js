@@ -6,6 +6,7 @@ define(function(require,module){
     //依赖模块
     var webglTest = require('dynamic/webglTest');//主模块
     var gridPaint = require('dynamic/gridPaint');//根据需求加载
+    var LinePaint = require('dynamic/linePaint');
 
     var webglSample = null;//渲染类
     var $webglCanvas = $('#webgl_canvas');//要渲染的canvas
@@ -20,7 +21,8 @@ define(function(require,module){
             if(webglTest && gridPaint){
                 webglSample = new webglTest.webglProgram($webglCanvas[0],$webglCanvas.width(),$webglCanvas.height());
                 if(webglSample){
-                    gridPaint.drawGrid(webglSample);
+                    //gridPaint.drawGrid(webglSample);
+                    LinePaint.linePaint(webglSample);
                     webglSample.beginRendering();
                     EventHandler.cameraPositionChangeEvent();
                 }
